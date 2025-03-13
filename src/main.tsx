@@ -1,7 +1,7 @@
 import { OsdkProvider } from "@osdk/react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
-import createClientAndAuth from "./createClientAndAuth";
+import createClientAndAuth from "./foundry/createClientAndAuth";
 import "./index.css";
 import { router } from "./router";
 
