@@ -1,13 +1,15 @@
 import { FilePlus2Icon } from "lucide-react";
 import { useRef } from "react";
+import { useCreateResearchPaper } from "../../hooks/research-papers/useCreateResearchPaper";
 
 export function NoResearchPapersUploaded() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { handleCreateResearchPaper } = useCreateResearchPaper();
 
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      console.log(file);
+      await handleCreateResearchPaper(file);
     }
   };
 
