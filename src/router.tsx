@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
-import AuthCallback from "./pages/AuthCallback";
-import Home from "./pages/Home";
+import { AuthCallback } from "./pages/AuthCallback";
+import { Home } from "./pages/Home";
 
 export const router = createBrowserRouter(
   [
@@ -14,5 +14,5 @@ export const router = createBrowserRouter(
       element: <AuthCallback />,
     },
   ],
-  { basename: import.meta.env.BASE_URL },
+  { basename: import.meta.env.BASE_URL }
 );

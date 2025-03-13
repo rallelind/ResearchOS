@@ -12,11 +12,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@osdk/client": "^2.1.0",
+    "@osdk/client": "2.2.0-beta.6",
     "@osdk/oauth": "^1.0.0",
     "@osdk/react": "^0.3.0-beta.0",
     "@researchos/sdk": "latest",
     "@tailwindcss/vite": "^4.0.14",
+    "@tanstack/react-query": "^5.67.3",
+    "lucide-react": "^0.479.0",
     "react": "^18",
     "react-dom": "^18",
     "react-router-dom": "^6.23.1",

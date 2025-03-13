@@ -6,7 +6,7 @@ import { auth } from "../main";
  * Component to render at `/auth/callback`
  * This calls signIn() again to save the token, and then navigates the user back to the home page.
  */
-function AuthCallback() {
+export function AuthCallback() {
   const [error, setError] = useState<string | undefined>(undefined);
   const navigate = useNavigate();
 
@@ -21,4 +21,3 @@ function AuthCallback() {
   return <div>{error != null ? error : "Authenticating…"}</div>;
 }
 
-export default AuthCallback;
