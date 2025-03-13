@@ -1,5 +1,18 @@
+import { useGetResearchPapers } from "../hooks/research-papers/useGetResearchPapers";
+import { NoResearchPapersUploaded } from "../components/research-papers/NoResearchPapersUploaded";
+
 export function Home() {
-  return <div className="bg-orange-50 h-screen w-screen">
-    
+  const { data, isLoading } = useGetResearchPapers();
+
+  if (isLoading) {
+    return null
+  }
+
+  return <div className="h-screen w-screen">
+    {data?.data.length === 0 ? (
+      <NoResearchPapersUploaded />
+    ) : (
+      <div>Research papers</div>
+    )}
   </div>;
 }
