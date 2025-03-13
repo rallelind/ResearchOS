@@ -1,4 +1,3 @@
-import "./index.css";
 import type { Client } from "@osdk/client";
 import { createClient } from "@osdk/client";
 import { $ontologyRid } from "@researchos/sdk";
