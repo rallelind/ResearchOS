@@ -1,0 +1,11 @@
+{
+  "foundryUrl": "https://ralles-org.euw-3.palantirfoundry.co.uk",
+  "site": {
+    "application": "ri.third-party-applications.main.application.e475be2c-85f2-41d2-a954-e30d6ecb6bdd",
+    "directory": "./dist",
+    "autoVersion": {
+      "type": "git-describe",
+      "tagPrefix": ""
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "ResearchOS",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint --report-unused-disable-directives --max-warnings 0 --fix",
+    "test": "vitest run",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@researchos/sdk": "latest",
+    "@osdk/client": "^2.1.0",
+    "@osdk/oauth": "^1.0.0",
+    "@osdk/react": "^0.3.0-beta.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-router-dom": "^6.23.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@eslint/compat": "^1.2.1",
+    "@eslint/js": "^9.13.0",
+    "@types/eslint-plugin-jsx-a11y": "^6.9.0",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^8.21.0",
+    "@typescript-eslint/parser": "^8.21.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "eslint": "^9.19.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.1",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.11.0",
+    "typescript": "~5.5.4",
+    "typescript-eslint": "^8.21.0",
+    "vite": "^6.0.11",
+    "vitest": "^3.0.5"
+  }
+}
