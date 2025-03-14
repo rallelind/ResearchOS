@@ -3,7 +3,12 @@ import { __EXPERIMENTAL__NOT_SUPPORTED_YET__createMediaReference } from "@osdk/a
 import { foundryClient } from "../main";
 import { ResearchPaper } from "@researchos/sdk";
 
-export async function uploadMedia(file: File, objectType: ResearchPaper) {
+type ObjectTypeWithMediaReference = ResearchPaper;
+
+export async function uploadMedia(
+  file: File,
+  objectType: ObjectTypeWithMediaReference
+) {
   const data = file;
 
   return await foundryClient(
