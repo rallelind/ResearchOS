@@ -9,7 +9,6 @@ export async function mutationFn(file: File) {
   const mediaReference: MediaReference = await uploadMedia(file, ResearchPaper);
 
   const result = await foundryClient(createResearchPaper).applyAction({
-    id: mediaReference.reference.mediaSetViewItem.mediaItemRid,
     title: file.name,
     media_reference: mediaReference,
     analysis_finished: false,
