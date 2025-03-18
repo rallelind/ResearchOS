@@ -10,16 +10,10 @@ export const router = createBrowserRouter(
       children: [
         {
           index: true,
-          element: <div></div>,
+          element: <div>Discover</div>,
         },
-      ],
-    },
-    {
-      path: "/library",
-      element: <ApplicationLayout />,
-      children: [
         {
-          index: true,
+          path: "library",
           element: <div>Library</div>,
         },
       ],
