@@ -5,9 +5,12 @@ import createClientAndAuth from "./foundry/createClientAndAuth";
 import "./index.css";
 import { router } from "./router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { createPlatformClient } from "@osdk/client";
 
 const { client: foundryClient, auth } = createClientAndAuth();
 export { auth, foundryClient };
+
+export const platformClient = createPlatformClient(import.meta.env.VITE_FOUNDRY_API_URL, auth)
 
 const queryClient = new QueryClient();
 

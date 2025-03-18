@@ -1,12 +1,28 @@
 import { createBrowserRouter } from "react-router-dom";
 import { AuthCallback } from "./pages/AuthCallback";
-import { Home } from "./pages/Home";
+import { ApplicationLayout } from "./components/application-layout/ApplicationLayout";
 
 export const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <Home />,
+      element: <ApplicationLayout />,
+      children: [
+        {
+          index: true,
+          element: <div></div>,
+        },
+      ],
+    },
+    {
+      path: "/library",
+      element: <ApplicationLayout />,
+      children: [
+        {
+          index: true,
+          element: <div>Library</div>,
+        },
+      ],
     },
     {
       // This is the route defined in your application's redirect URL
