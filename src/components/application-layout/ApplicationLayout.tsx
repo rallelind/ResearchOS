@@ -78,7 +78,7 @@ export function ApplicationLayout() {
           </div>
         </div>
       )}
-      <main className="flex-1 overflow-y-auto p-10">
+      <main className="flex-1 overflow-y-auto">
         <Outlet />
       </main>
     </div>

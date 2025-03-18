@@ -60,7 +60,7 @@ export class SemanticScholarPapersGraph {
   // TODO: add types
   async getPaperDetails(paperId: string) {
     try {
-      const response = await fetch(`${this.baseUrl}/paper/${paperId}?fields=referenceCount,title,tldr,abstract`);
+      const response = await fetch(`${this.baseUrl}/paper/${paperId}?fields=referenceCount,title,tldr,abstract,authors.name`);
       const data = await response.json();
       return data;
     } catch (error) {
