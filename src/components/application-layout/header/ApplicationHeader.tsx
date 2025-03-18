@@ -76,7 +76,7 @@ export function ApplicationHeader() {
   const { pathname } = useLocation();
 
   const isLibrary = pathname === "/library";
-  const isDiscover = pathname === "/";
+  const isDiscover = pathname.includes("/discover");
 
   return (
     <header className="p-4 flex justify-between items-center border-b border-gray-200">
@@ -85,7 +85,7 @@ export function ApplicationHeader() {
       </div>
       <div className="w-1/2 flex justify-center gap-6 text-zinc-500">
         <Link
-          to="/"
+          to="/discover"
           className={cn("flex items-center gap-2 p-2 px-4 rounded-full", {
             "bg-zinc-100 text-black": isDiscover,
           })}

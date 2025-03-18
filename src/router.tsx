@@ -1,7 +1,8 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import { AuthCallback } from "./pages/AuthCallback";
 import { ApplicationLayout } from "./components/application-layout/ApplicationLayout";
 import { DiscoverPapersPage } from "./pages/DiscoverPapers";
+import { PaperPage } from "./pages/Paper";
 
 export const router = createBrowserRouter(
   [
@@ -11,7 +12,15 @@ export const router = createBrowserRouter(
       children: [
         {
           index: true,
+          element: <Navigate to="/discover" replace />,
+        },
+        {
+          path: "discover",
           element: <DiscoverPapersPage />,
+        },
+        {
+          path: "discover/paper/:paperId",
+          element: <PaperPage />,
         },
         {
           path: "library",

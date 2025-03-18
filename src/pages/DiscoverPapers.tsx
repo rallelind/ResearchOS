@@ -6,20 +6,35 @@ import { SuggestedPaperCard } from "../components/discover-papers/SuggestedPaper
 import { Spinner } from "../components/ui/Spinner";
 import { useNavigate } from "react-router-dom";
 
+const SEARCH_QUERY_KEY = "researchOS-paperSearchQuery";
+
 export function DiscoverPapersPage() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(() => {
+    return sessionStorage.getItem(SEARCH_QUERY_KEY) || "";
+  });
+
   const debouncedQuery = useDebounce(query, 500);
   const deferredQuery = useDeferredValue(debouncedQuery);
 
-  const { suggestions } = useGetSuggestions(deferredQuery);
+  const { suggestions, isLoadingSuggestions } =
+    useGetSuggestions(deferredQuery);
   const deferredSuggestions = useDeferredValue(suggestions);
 
-  const isLoading = deferredQuery !== query;
+  const isLoading = deferredQuery !== query || isLoadingSuggestions;
 
   const navigate = useNavigate();
 
+  const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newQuery = e.target.value;
+    setQuery(newQuery);
+
+    if (newQuery) {
+      sessionStorage.setItem(SEARCH_QUERY_KEY, newQuery);
+    }
+  };
+
   const handlePaperClick = (paperId: string) => {
-    navigate(`/paper/${paperId}`);
+    navigate(`/discover/paper/${paperId}`);
   };
 
   return (
@@ -35,7 +50,7 @@ export function DiscoverPapersPage() {
         <div className="relative flex items-center w-full">
           <input
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={handleQueryChange}
             placeholder="Search for papers"
             className="rounded-full w-full border border-zinc-200 p-2 pl-4 pr-10 focus:outline-2 focus:outline-purple-100"
           />
