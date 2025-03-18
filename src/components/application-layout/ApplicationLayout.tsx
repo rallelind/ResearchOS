@@ -57,7 +57,7 @@ export function ApplicationLayout() {
         <div className="px-6 py-3 border-zinc-100 flex items-center">
           <div className="flex items-center">
             {breadcrumbs.map((breadcrumb, index) => (
-              <>
+              <div key={breadcrumb.path} className="flex items-center">
                 {index !== 0 && <span className="mx-4 text-zinc-400">/</span>}
                 {breadcrumb.isLast ? (
                   <span className="flex items-center text-sm font-medium text-zinc-800">
@@ -73,7 +73,7 @@ export function ApplicationLayout() {
                     {breadcrumb.title}
                   </Link>
                 )}
-              </>
+              </div>
             ))}
           </div>
         </div>

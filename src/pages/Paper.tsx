@@ -1,6 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useGetPaper } from "../hooks/discover-papers/useGetPaper";
-import { LibraryBigIcon, ZapIcon } from "lucide-react";
+import { ExternalLinkIcon, LibraryBigIcon, ZapIcon } from "lucide-react";
+
+function getPdfUrl(paper: any) {
+  if (paper.externalIds.ArXiv) {
+    return `https://arxiv.org/pdf/${paper.externalIds.ArXiv}`;
+  }
+
+  return paper.openAccessPdf;
+}
 
 export function PaperPage() {
   const { paperId } = useParams();
@@ -37,7 +45,7 @@ export function PaperPage() {
         </div>
       </div>
       <div className="basis-1/3 bg-zinc-50 rounded-lg p-4 h-fit">
-        <div className="flex flex-col gap-4 border-b pb-4 border-zinc-100">
+        <div className="flex flex-col gap-4 border-b pb-4 border-zinc-200">
           <p className="text-sm text-zinc-500 font-medium">References</p>
           <div className="flex items-center gap-2 justify-between text-sm">
             <p>Amount of references</p>
@@ -46,7 +54,7 @@ export function PaperPage() {
             </p>
           </div>
         </div>
-        <div className="flex flex-col gap-4 mt-4">
+        <div className="flex flex-col gap-4 mt-4 border-b pb-4 border-zinc-200">
           <p className="text-sm text-zinc-500 font-medium">Authors</p>
           <div className="flex flex-wrap gap-2">
             {paper.authors.map((author: { name: string }) => (
@@ -57,6 +65,20 @@ export function PaperPage() {
                 {author.name}
               </p>
             ))}
+          </div>
+        </div>
+        <div className="flex flex-col gap-4 mt-4">
+          <p className="text-sm text-zinc-500 font-medium">Source</p>
+          <div className="flex items-center gap-2">
+            <a
+              href={getPdfUrl(paper)}
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm flex gap-2 items-center bg-white px-2 py-1 rounded-full shadow-xs"
+            >
+              <ExternalLinkIcon className="w-4 h-4" />
+              <p>Go to original paper</p>
+            </a>
           </div>
         </div>
       </div>
