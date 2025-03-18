@@ -45,7 +45,7 @@ export function PaperPage() {
         </div>
       </div>
       <div className="basis-1/3 bg-zinc-50 rounded-lg p-4 h-fit">
-        <div className="flex flex-col gap-4 border-b pb-4 border-zinc-200">
+        <div className="flex flex-col gap-4 border-b pb-4 border-zinc-100">
           <p className="text-sm text-zinc-500 font-medium">References</p>
           <div className="flex items-center gap-2 justify-between text-sm">
             <p>Amount of references</p>
@@ -54,7 +54,7 @@ export function PaperPage() {
             </p>
           </div>
         </div>
-        <div className="flex flex-col gap-4 mt-4 border-b pb-4 border-zinc-200">
+        <div className="flex flex-col gap-4 mt-4 border-b pb-4 border-zinc-100">
           <p className="text-sm text-zinc-500 font-medium">Authors</p>
           <div className="flex flex-wrap gap-2">
             {paper.authors.map((author: { name: string }) => (
