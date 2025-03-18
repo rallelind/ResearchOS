@@ -6,6 +6,7 @@ import {
   PlusIcon,
   ZapIcon,
 } from "lucide-react";
+import { useState } from "react";
 
 function getPdfUrl(paper: any) {
   if (paper.externalIds.ArXiv) {
@@ -17,12 +18,23 @@ function getPdfUrl(paper: any) {
 
 export function PaperPage() {
   const { paperId } = useParams();
-
   const { paper } = useGetPaper(paperId || "");
+  const [abstractExpanded, setAbstractExpanded] = useState(false);
 
   if (!paper) {
     return null;
   }
+
+  const toggleAbstract = () => {
+    setAbstractExpanded(!abstractExpanded);
+  };
+
+  const abstractLines = paper.abstract.split('\n').length;
+  const isLongAbstract = paper.abstract.length > 400 || abstractLines > 4;
+  
+  const displayedAbstract = isLongAbstract && !abstractExpanded
+    ? `${paper.abstract.slice(0, 300)}${paper.abstract.length > 300 ? '...' : ''}`
+    : paper.abstract;
 
   return (
     <div className="flex gap-20 px-30 py-10 justify-between">
@@ -45,7 +57,17 @@ export function PaperPage() {
                 Abstract
               </p>
             </div>
-            <p className="text-sm text-zinc-500">{paper.abstract}</p>
+            <p className="text-sm text-zinc-500">
+              {displayedAbstract}
+              {isLongAbstract && (
+                <button 
+                  onClick={toggleAbstract} 
+                  className="text-xs text-purple-500 hover:text-purple-700 transition-colors ml-1 inline-block"
+                >
+                  {abstractExpanded ? 'Show less' : 'Show more'}
+                </button>
+              )}
+            </p>
           </div>
         </div>
       </div>
