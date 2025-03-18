@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { AuthCallback } from "./pages/AuthCallback";
 import { ApplicationLayout } from "./components/application-layout/ApplicationLayout";
+import { DiscoverPapersPage } from "./pages/DiscoverPapers";
 
 export const router = createBrowserRouter(
   [
@@ -10,7 +11,7 @@ export const router = createBrowserRouter(
       children: [
         {
           index: true,
-          element: <div>Discover</div>,
+          element: <DiscoverPapersPage />,
         },
         {
           path: "library",

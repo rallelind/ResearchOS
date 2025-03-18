@@ -33,7 +33,7 @@ export class SemanticScholarPapersGraph {
   async getSuggestions(query: string): Promise<SuggestionsResponse> {
     try {
       const response = await fetch(
-        `${this.baseUrl}/paper/suggestions?query=${query}`
+        `${this.baseUrl}/paper/autocomplete?query=${query}`
       );
       const data: SuggestionsResponse = await response.json();
       return data;
