@@ -6,9 +6,11 @@ export const HIGHLIGHT_CLASS = "bg-purple-100";
 export function SuggestedPaperCard({
   suggestion,
   query,
+  onClick,
 }: {
   suggestion: SuggestionsResponse["matches"][0];
   query: string;
+  onClick: () => void;
 }) {
   const highlightMatch = (title: string, query: string): ReactNode => {
     if (!query.trim()) return title;
@@ -28,13 +30,16 @@ export function SuggestedPaperCard({
   };
 
   return (
-    <div className="flex items-start p-4 gap-4 hover:bg-zinc-50 rounded-lg">
+    <button
+      className="flex items-start p-4 gap-4 hover:bg-zinc-50 rounded-lg text-left"
+      onClick={onClick}
+    >
       <div>
         <div className="text-sm text-black">
           {highlightMatch(suggestion.title, query)}
         </div>
         <div className="text-sm text-zinc-500">{suggestion.authorsYear}</div>
       </div>
-    </div>
+    </button>
   );
 }

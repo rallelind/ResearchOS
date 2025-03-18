@@ -4,6 +4,7 @@ import { useDebounce } from "../hooks/useDebounce";
 import { useGetSuggestions } from "../hooks/discover-papers/useGetSuggestions";
 import { SuggestedPaperCard } from "../components/discover-papers/SuggestedPaperCard";
 import { Spinner } from "../components/ui/Spinner";
+import { useNavigate } from "react-router-dom";
 
 export function DiscoverPapersPage() {
   const [query, setQuery] = useState("");
@@ -14,6 +15,12 @@ export function DiscoverPapersPage() {
   const deferredSuggestions = useDeferredValue(suggestions);
 
   const isLoading = deferredQuery !== query;
+
+  const navigate = useNavigate();
+
+  const handlePaperClick = (paperId: string) => {
+    navigate(`/paper/${paperId}`);
+  };
 
   return (
     <div className="p-20 flex flex-col gap-6">
@@ -49,6 +56,7 @@ export function DiscoverPapersPage() {
             key={suggestion.id}
             suggestion={suggestion}
             query={deferredQuery}
+            onClick={() => handlePaperClick(suggestion.id)}
           />
         ))}
         {!isLoading && deferredSuggestions?.matches?.length === 0 && (
