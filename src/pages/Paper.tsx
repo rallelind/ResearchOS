@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useGetPaper } from "../hooks/discover-papers/useGetPaper";
-import { LibraryBigIcon, ListIcon, ZapIcon } from "lucide-react";
+import { LibraryBigIcon, ZapIcon } from "lucide-react";
 
 export function PaperPage() {
   const { paperId } = useParams();
@@ -14,7 +14,7 @@ export function PaperPage() {
   return (
     <div className="max-w-prose flex flex-col gap-4">
       <h1 className="text-2xl">{paper.title}</h1>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-1">
             <ZapIcon className="w-4 h-4 text-purple-500" />
