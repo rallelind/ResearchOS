@@ -70,4 +70,17 @@ export class SemanticScholarPapersGraph {
       throw error;
     }
   }
+
+  async getPaperReferences(paperId: string) {
+    try {
+      const response = await fetch(
+        `${this.baseUrl}/paper/${paperId}/references`
+      );
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
 }
