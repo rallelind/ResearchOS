@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useGetPaper } from "../hooks/discover-papers/useGetPaper";
 import {
+    BookmarkPlusIcon,
   ExternalLinkIcon,
   LibraryBigIcon,
   PlusIcon,
@@ -111,7 +112,7 @@ export function PaperPage() {
           </div>
         </div>
         <button className="bg-purple-50 text-purple-600 px-4 py-2 rounded-full text-xs flex items-center mt-4 flex gap-2">
-          <PlusIcon className="w-3 h-3" />
+          <BookmarkPlusIcon className="w-4 h-4" />
           <p>Add to library</p>
         </button>
       </div>
