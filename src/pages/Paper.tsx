@@ -119,6 +119,7 @@ export function PaperPage() {
           </button>
         </div>
       </div>
+      <ReferenceGraph paperIds={paper.references.map((reference: any) => reference.paperId)} />
     </div>
   );
 }

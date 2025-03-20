@@ -61,7 +61,7 @@ export class SemanticScholarPapersGraph {
   async getPaperDetails(paperId: string) {
     try {
       const response = await fetch(
-        `${this.baseUrl}/paper/${paperId}?fields=referenceCount,title,tldr,abstract,authors.name,openAccessPdf,externalIds`
+        `${this.baseUrl}/paper/${paperId}?fields=referenceCount,title,tldr,abstract,authors.name,openAccessPdf,externalIds,references.paperId`
       );
       const data = await response.json();
       return data;
@@ -82,5 +82,17 @@ export class SemanticScholarPapersGraph {
       console.error(error);
       throw error;
     }
+  }
+
+  async getAllPapersWithIds(paperIds: string[]) {
+    const response = await fetch(
+      `${this.baseUrl}/paper/batch?fields=title,paperId,references.paperId`,
+      {
+        method: "POST",
+        body: JSON.stringify({ ids: paperIds }),
+      }
+    );
+    const data = await response.json();
+    return data;
   }
 }

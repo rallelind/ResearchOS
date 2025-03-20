@@ -1,9 +1,9 @@
 import { useGetPaperReferences } from "../../../hooks/discover-papers/useGetPaperReferences";
 
 
-export function ReferenceGraph({ paperId }: { paperId: string }) {
+export function ReferenceGraph({ paperIds }: { paperIds: string[] }) {
   const { references } =
-    useGetPaperReferences(paperId);
+    useGetPaperReferences(paperIds);
 
   console.log(references)
 

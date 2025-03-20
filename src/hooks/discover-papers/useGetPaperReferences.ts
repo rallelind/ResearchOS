@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { SemanticScholarPapersGraph } from "../../semantic-scholar-papers-graph";
 
-async function queryFn(paperId: string) {
+async function queryFn(paperIds: string[]) {
   const semanticScholarPapersGraph = new SemanticScholarPapersGraph();
-  return semanticScholarPapersGraph.getPaperReferences(paperId);
+  return semanticScholarPapersGraph.getAllPapersWithIds(paperIds);
 }
 
-export function useGetPaperReferences(paperId: string) {
+export function useGetPaperReferences(paperIds: string[]) {
   const { data, isLoading, error } = useQuery({
-    queryKey: ["paper-references", paperId],
-    queryFn: () => queryFn(paperId),
+    queryKey: ["paper-references", paperIds],
+    queryFn: () => queryFn(paperIds),
   });
 
   return {
