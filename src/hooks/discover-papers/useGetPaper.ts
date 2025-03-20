@@ -8,6 +8,7 @@ export function useGetPaper(paperId: string) {
       const semanticScholarPapersGraph = new SemanticScholarPapersGraph();
       return semanticScholarPapersGraph.getPaperDetails(paperId);
     },
+    // TODO: currently this is for the rate limit error, but we should handle it better
     refetchInterval: (query) => query.state.error ? 1000 : 0,
 });
 
