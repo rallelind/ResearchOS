@@ -8,7 +8,8 @@ export function useGetPaper(paperId: string) {
       const semanticScholarPapersGraph = new SemanticScholarPapersGraph();
       return semanticScholarPapersGraph.getPaperDetails(paperId);
     },
-  });
+    refetchInterval: (query) => query.state.error ? 1000 : 0,
+});
 
   return {
     paper: data,
