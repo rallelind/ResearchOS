@@ -1,4 +1,4 @@
-import { BookMarkedIcon, BookmarkPlusIcon } from "lucide-react";
+import { BookmarkPlusIcon } from "lucide-react";
 
 export function ReferenceOntology() {
   return (
@@ -8,9 +8,9 @@ export function ReferenceOntology() {
       </div>
       <div className="p-10 bg-zinc-50 rounded-lg flex flex-col gap-4 items-center">
         <div className="w-1/3">
-          <div className="bg-white border border-zinc-100 w-full p-6 rounded-sm shadow-xs flex flex-col gap-4 items-center text-center">
+          <div className="bg-white border border-zinc-100 w-full p-6 rounded-sm flex flex-col gap-4 items-center text-center">
             <div>
-              <p className="text-sm font-medium">
+              <p className="text-sm">
                 No ontology created for this paper yet
               </p>
               <p className="text-xs text-zinc-500">
@@ -18,7 +18,7 @@ export function ReferenceOntology() {
                 between this paper and other papers
               </p>
             </div>
-            <button className="flex items-center gap-2 text-xs bg-black text-white px-4 py-2 rounded-full w-fit">
+            <button className="flex items-center gap-2 text-xs bg-zinc-100 text-black px-4 py-2 rounded-full w-fit">
               <BookmarkPlusIcon className="w-4 h-4" />
               <p>Create Ontology</p>
             </button>
