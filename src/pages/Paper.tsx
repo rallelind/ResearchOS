@@ -1,16 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useGetPaper } from "../hooks/discover-papers/useGetPaper";
-import {
-  BookmarkPlusIcon,
-  ExternalLinkIcon,
-  LibraryBigIcon,
-  ZapIcon,
-} from "lucide-react";
+import { ExternalLinkIcon, LibraryBigIcon, ZapIcon } from "lucide-react";
 import { useState } from "react";
-import {
-  ReferenceGraph,
-  ReferenceOntology,
-} from "../components/papers-visualtion/reference-graph/ReferenceGraph";
+import { ReferenceOntology } from "../components/papers-visualtion/reference-graph/ReferenceGraph";
 
 function getPdfUrl(paper: any) {
   if (paper.externalIds.ArXiv) {
