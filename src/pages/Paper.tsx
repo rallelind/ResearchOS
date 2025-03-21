@@ -7,7 +7,10 @@ import {
   ZapIcon,
 } from "lucide-react";
 import { useState } from "react";
-import { ReferenceGraph } from "../components/papers-visualtion/reference-graph/ReferenceGraph";
+import {
+  ReferenceGraph,
+  ReferenceOntology,
+} from "../components/papers-visualtion/reference-graph/ReferenceGraph";
 
 function getPdfUrl(paper: any) {
   if (paper.externalIds.ArXiv) {
@@ -39,7 +42,7 @@ export function PaperPage() {
       : paper.abstract;
 
   return (
-    <div className="px-30 py-10">
+    <div className="px-30 py-10 flex flex-col gap-10">
       <div className="flex gap-20 justify-between">
         <div className="max-w-prose basis-2/3 flex flex-col gap-4">
           <h1 className="text-2xl">{paper.title}</h1>
@@ -113,13 +116,9 @@ export function PaperPage() {
               </div>
             </div>
           </div>
-          <button className="bg-purple-50 text-purple-600 px-4 py-2 rounded-full text-xs flex items-center mt-4 flex gap-2">
-            <BookmarkPlusIcon className="w-4 h-4" />
-            <p>Add to library</p>
-          </button>
         </div>
       </div>
-      <ReferenceGraph paperIds={paper.references.map((reference: any) => reference.paperId)} />
+      <ReferenceOntology />
     </div>
   );
 }
