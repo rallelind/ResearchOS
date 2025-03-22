@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { getCurrent, profilePicture } from "@osdk/foundry.admin/User";
 import { platformClient } from "../../../main";
 import { User } from "@osdk/foundry.admin";
-import { BookMarkedIcon, ScanSearchIcon } from "lucide-react";
+import { BookMarkedIcon, FocusIcon, ScanSearchIcon } from "lucide-react";
 import { cn } from "../../../utils/cn";
 
 function UserMenu() {
@@ -77,7 +77,7 @@ export function ApplicationHeader() {
 
   const isLibrary = pathname === "/library";
   const isDiscover = pathname.includes("/discover");
-
+  const isFocus = pathname === "/focus";
   return (
     <header className="p-4 flex justify-between items-center border-b border-gray-200">
       <div className="w-1/4">
@@ -101,6 +101,15 @@ export function ApplicationHeader() {
         >
           <BookMarkedIcon className="w-4 h-4" />
           <h1 className="text-xs">Your Library</h1>
+        </Link>
+        <Link
+          to="/focus"
+          className={cn("flex items-center gap-2 p-2 px-4 rounded-full", {
+            "bg-zinc-100 text-black": isFocus,
+          })}
+        >
+          <FocusIcon className="w-4 h-4" />
+          <h1 className="text-xs">Focused Research</h1>
         </Link>
       </div>
       <div className="w-1/4" />

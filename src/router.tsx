@@ -26,6 +26,10 @@ export const router = createBrowserRouter(
           path: "library",
           element: <div>Library</div>,
         },
+        {
+          path: "focus",
+          element: <div>Focus</div>,
+        },
       ],
     },
     {

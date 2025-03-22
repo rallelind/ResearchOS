@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { ApplicationHeader } from "./header/ApplicationHeader";
-import { BookMarkedIcon, ScanSearchIcon } from "lucide-react";
+import { BookMarkedIcon, FocusIcon, ScanSearchIcon } from "lucide-react";
 
 export function ApplicationLayout() {
   const location = useLocation();
@@ -20,6 +20,10 @@ export function ApplicationLayout() {
     paper: {
       title: "Paper Details",
       icon: null,
+    },
+    focus: {
+      title: "Focused Research",
+      icon: <FocusIcon className="h-4 w-4 mr-2" />,
     },
   };
 
