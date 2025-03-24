@@ -20,6 +20,8 @@
     "@researchos/sdk": "latest",
     "@tailwindcss/vite": "^4.0.14",
     "@tanstack/react-query": "^5.67.3",
+    "@tiptap/react": "^2.11.5",
+    "@tiptap/starter-kit": "^2.11.5",
     "clsx": "^2.1.1",
     "lucide-react": "^0.479.0",
     "react": "^18",
