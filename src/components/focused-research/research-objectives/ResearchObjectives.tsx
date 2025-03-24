@@ -1,10 +1,11 @@
-import { GoalIcon } from "lucide-react";
+import { GoalIcon, HelpCircleIcon } from "lucide-react";
 import { CreateResearchObjective } from "./CreateResearchObjective";
 import { useGetResearchObjectives } from "../../../hooks/focused-research/research-objectives/useGetResearchObjectives";
 import { Spinner } from "../../ui/Spinner";
 import { ResearchObjective } from "@researchos/sdk";
 import { Osdk } from "@osdk/client";
 import { Link } from "react-router-dom";
+import { cn } from "../../../utils/cn";
 
 function EmptyState() {
   return (
@@ -28,12 +29,26 @@ function ResearchObjectiveCard({
 }: {
   researchObjective: Osdk.Instance<ResearchObjective>;
 }) {
+  console.log(researchObjective);
+
   return (
     <Link
       to={`/focus/research-objectives/${researchObjective.id}`}
-      className="flex items-center justify-between p-2"
+      className="flex gap-4 p-4 hover:bg-zinc-50 rounded-lg items-start"
     >
-      <p className="text-sm">{researchObjective.researchObjectiveTitle}</p>
+      <div className="flex items-center justify-center w-fit h-fit bg-purple-100 rounded-sm p-2">
+        <HelpCircleIcon className="w-4 h-4 text-purple-500" />
+      </div>
+      <div>
+        <p className="text-sm">{researchObjective.researchObjectiveTitle}</p>
+        <p
+          className={cn("text-xs text-zinc-500", {
+            italic: !researchObjective.researchObjective,
+          })}
+        >
+          {researchObjective.researchObjective || "No objective defined yet"}
+        </p>
+      </div>
     </Link>
   );
 }
@@ -48,7 +63,7 @@ export function ResearchObjectives() {
         <p className="text-xs text-zinc-500 font-medium">Research Objectives</p>
         <CreateResearchObjective />
       </div>
-      <div className="px-6">
+      <div className="px-4">
         {researchObjectivesLoading && <Spinner size="lg" />}
         {researchObjectives?.length === 0 && <EmptyState />}
         <div className="flex flex-col gap-4">

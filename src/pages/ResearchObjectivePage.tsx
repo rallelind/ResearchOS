@@ -4,8 +4,9 @@ import { useGetResearchObjective } from "../hooks/focused-research/research-obje
 export function ResearchObjectivePage() {
   const { researchObjectiveId } = useParams();
 
-  const { researchObjective } =
-    useGetResearchObjective(researchObjectiveId ?? "");
+  const { researchObjective } = useGetResearchObjective(
+    researchObjectiveId ?? ""
+  );
 
   if (!researchObjective) return null;
 
