@@ -20,4 +20,3 @@ export function AuthCallback() {
   }, [navigate]);
   return <div>{error != null ? error : "Authenticating…"}</div>;
 }
-
