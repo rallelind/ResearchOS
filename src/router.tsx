@@ -3,7 +3,7 @@ import { AuthCallback } from "./pages/AuthCallback";
 import { ApplicationLayout } from "./components/application-layout/ApplicationLayout";
 import { DiscoverPapersPage } from "./pages/DiscoverPapers";
 import { PaperPage } from "./pages/Paper";
-
+import { FocusedResearch } from "./pages/FocusedResearch";
 export const router = createBrowserRouter(
   [
     {
@@ -28,7 +28,7 @@ export const router = createBrowserRouter(
         },
         {
           path: "focus",
-          element: <div>Focus</div>,
+          element: <FocusedResearch />,
         },
       ],
     },
