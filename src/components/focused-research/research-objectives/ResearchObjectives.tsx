@@ -1,4 +1,4 @@
-import { GoalIcon, HelpCircleIcon } from "lucide-react";
+import { GoalIcon } from "lucide-react";
 import { CreateResearchObjective } from "./CreateResearchObjective";
 import { useGetResearchObjectives } from "../../../hooks/focused-research/research-objectives/useGetResearchObjectives";
 import { Spinner } from "../../ui/Spinner";
@@ -29,16 +29,11 @@ function ResearchObjectiveCard({
 }: {
   researchObjective: Osdk.Instance<ResearchObjective>;
 }) {
-  console.log(researchObjective);
-
   return (
     <Link
       to={`/focus/research-objectives/${researchObjective.id}`}
       className="flex gap-4 p-4 hover:bg-zinc-50 rounded-lg items-start"
     >
-      <div className="flex items-center justify-center w-fit h-fit bg-purple-100 rounded-sm p-2">
-        <HelpCircleIcon className="w-4 h-4 text-purple-500" />
-      </div>
       <div>
         <p className="text-sm">{researchObjective.researchObjectiveTitle}</p>
         <p
