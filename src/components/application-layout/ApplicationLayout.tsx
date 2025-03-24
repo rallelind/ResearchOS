@@ -23,7 +23,8 @@ export function ApplicationLayout() {
       { path: "/discover/paper", title: "Paper Details", icon: null }
     ],
     "/focus/research-objectives": [
-      { path: "/focus", title: "Focused Research", icon: <FocusIcon className="h-4 w-4 mr-2" /> }
+      { path: "/focus", title: "Focused Research", icon: <FocusIcon className="h-4 w-4 mr-2" /> },
+      { path: "/focus/research-objectives", title: "Research Objectives", icon: null }
     ],
   };
 

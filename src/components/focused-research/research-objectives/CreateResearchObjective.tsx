@@ -7,7 +7,7 @@ import {
 } from "@headlessui/react";
 import { PlusIcon } from "lucide-react";
 import { useState } from "react";
-import { useCreateResearchObjective } from "../../../hooks/focused-research/research-objectives";   
+import { useCreateResearchObjective } from "../../../hooks/focused-research/research-objectives/useCreateResearchObjectives";   
 import { useNavigate } from "react-router-dom";
 
 export function CreateResearchObjective() {

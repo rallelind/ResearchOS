@@ -1,5 +1,10 @@
 import { GoalIcon } from "lucide-react";
 import { CreateResearchObjective } from "./CreateResearchObjective";
+import { useGetResearchObjectives } from "../../../hooks/focused-research/research-objectives/useGetResearchObjectives";
+import { Spinner } from "../../ui/Spinner";
+import { ResearchObjective } from "@researchos/sdk";
+import { Osdk } from "@osdk/client";
+import { Link } from "react-router-dom";
 
 function EmptyState() {
   return (
@@ -18,15 +23,42 @@ function EmptyState() {
   );
 }
 
+function ResearchObjectiveCard({
+  researchObjective,
+}: {
+  researchObjective: Osdk.Instance<ResearchObjective>;
+}) {
+  return (
+    <Link
+      to={`/focus/research-objectives/${researchObjective.id}`}
+      className="flex items-center justify-between p-2"
+    >
+      <p className="text-sm">{researchObjective.researchObjectiveTitle}</p>
+    </Link>
+  );
+}
+
 export function ResearchObjectives() {
+  const { researchObjectives, researchObjectivesLoading } =
+    useGetResearchObjectives();
+
   return (
     <aside className="border-l border-zinc-200 w-1/4">
       <div className="flex items-center justify-between p-4">
         <p className="text-xs text-zinc-500 font-medium">Research Objectives</p>
         <CreateResearchObjective />
       </div>
-      <div className="p-6">
-        <EmptyState />
+      <div className="px-6">
+        {researchObjectivesLoading && <Spinner size="lg" />}
+        {researchObjectives?.length === 0 && <EmptyState />}
+        <div className="flex flex-col gap-4">
+          {researchObjectives?.map((researchObjective) => (
+            <ResearchObjectiveCard
+              key={researchObjective.id}
+              researchObjective={researchObjective}
+            />
+          ))}
+        </div>
       </div>
     </aside>
   );
