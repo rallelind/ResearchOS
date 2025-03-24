@@ -22,7 +22,7 @@ export function ResearchObjectivePage() {
         />
       </div>
       <div className="basis-1/3">
-        <Button className="flex items-center gap-2 bg-black text-white p-2 px-4 rounded-full ml-auto mb-4 text-xs">
+        <Button disabled className="flex items-center gap-2 bg-black text-white p-2 px-4 rounded-full ml-auto mb-4 text-xs disabled:opacity-60 disabled:cursor-not-allowed">
           <CircleFadingArrowUp className="w-4 h-4" />
           <p>Publish changes</p>
         </Button>
