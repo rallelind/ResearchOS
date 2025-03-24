@@ -1,4 +1,5 @@
-import { GoalIcon, PlusIcon } from "lucide-react";
+import { GoalIcon } from "lucide-react";
+import { CreateResearchObjective } from "./CreateResearchObjective";
 
 function EmptyState() {
   return (
@@ -22,9 +23,7 @@ export function ResearchObjectives() {
     <aside className="border-l border-zinc-200 w-1/4">
       <div className="flex items-center justify-between p-4">
         <p className="text-xs text-zinc-500 font-medium">Research Objectives</p>
-        <button className="flex items-center gap-2 p-2 hover:bg-zinc-100 rounded-sm">
-          <PlusIcon className="w-4 h-4 text-zinc-500" />
-        </button>
+        <CreateResearchObjective />
       </div>
       <div className="p-6">
         <EmptyState />

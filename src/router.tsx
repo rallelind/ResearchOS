@@ -4,6 +4,8 @@ import { ApplicationLayout } from "./components/application-layout/ApplicationLa
 import { DiscoverPapersPage } from "./pages/DiscoverPapers";
 import { PaperPage } from "./pages/Paper";
 import { FocusedResearch } from "./pages/FocusedResearch";
+import { ResearchObjectivePage } from "./pages/ResearchObjectivePage";
+
 export const router = createBrowserRouter(
   [
     {
@@ -29,6 +31,10 @@ export const router = createBrowserRouter(
         {
           path: "focus",
           element: <FocusedResearch />,
+        },
+        {
+          path: "focus/research-objectives/:researchObjectiveId",
+          element: <ResearchObjectivePage />,
         },
       ],
     },

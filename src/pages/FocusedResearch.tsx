@@ -1,4 +1,4 @@
-import { ResearchObjectives } from "../components/focused-research/ResearchObjectives";
+import { ResearchObjectives } from "../components/focused-research/research-objectives/ResearchObjectives";
 
 export function FocusedResearch() {
   return (
