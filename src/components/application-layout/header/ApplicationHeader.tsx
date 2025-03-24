@@ -77,7 +77,8 @@ export function ApplicationHeader() {
 
   const isLibrary = pathname === "/library";
   const isDiscover = pathname.includes("/discover");
-  const isFocus = pathname === "/focus";
+  const isFocus = pathname.includes("/focus");
+  
   return (
     <header className="p-4 flex justify-between items-center border-b border-gray-200">
       <div className="w-1/4">

@@ -48,7 +48,7 @@ export function CreateResearchObjective() {
               autoFocus
             />
             <Button
-              className="ml-auto text-xs bg-purple-100 px-4 py-2 rounded-sm text-white bg-purple-600 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="ml-auto text-xs bg-purple-100 px-4 py-2 rounded-sm text-white bg-purple-500 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-purple-600"
               disabled={title.length === 0}
               onClick={handleCreateResearchObjectiveClick}
             >
