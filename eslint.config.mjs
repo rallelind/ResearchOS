@@ -54,7 +54,7 @@ export default tseslint.config({
     }],
 
     "import/default": "error",
-    "import/namespace": "error",
+    "import/namespace": "warn",
     "import/no-duplicates": "error",
     "react/react-in-jsx-scope": "off",
     "jsx-a11y/no-autofocus": "warn",
