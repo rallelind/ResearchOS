@@ -6,7 +6,7 @@ import BulletList from "@tiptap/extension-bullet-list";
 import OrderedList from "@tiptap/extension-ordered-list";
 import { useEffect, useState } from "react";
 
-export function ResearchObjectiveEditor({ content }: { content: string }) {
+export function ResearchObjectiveEditor({ content, onChange }: { content: string; onChange: (content: string) => void }) {
   const [isEmpty, setIsEmpty] = useState<boolean>(content === "" || content === "<p></p>");
   
   const editor = useEditor({
@@ -39,6 +39,7 @@ export function ResearchObjectiveEditor({ content }: { content: string }) {
     },
     onUpdate: ({ editor }) => {
       setIsEmpty(editor.isEmpty);
+      onChange(editor.getHTML());
     },
   });
 
