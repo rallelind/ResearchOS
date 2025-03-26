@@ -20,58 +20,11 @@ export function DynamicLucideIcon({ icon, className }: DynamicLucideIconProps) {
   return <Icon className={className} />;
 }
 
-const dummyTasks = [
-  {
-    topic: "Applied AI",
-    tasks: [
-      {
-        task: "Find Latest Papers",
-        icon: "ScanText",
-      },
-      {
-        topic: "AI Interfaces",
-        tasks: [
-          {
-            task: "Find Latest Papers",
-            icon: "ScanText",
-          },
-          {
-            task: "Find Github Repos",
-            icon: "Github",
-          },
-        ],
-      },
-    ],
-  },
-];
-
-function RenderTask({ node, depth = 0 }) {
-  if (node.topic) {
-    return (
-      <div className={`ml-${depth * 4} mt-2`}>
-        <h3 className="font-medium">{node.topic}</h3>
-        {node.tasks &&
-          node.tasks.map((child, index) => (
-            <RenderTask key={index} node={child} depth={depth + 1} />
-          ))}
-      </div>
-    );
-  }
-
+function Task({ task }: any) {
   return (
     <div className="ml-4 mt-2 flex items-center gap-2 bg-white border border-zinc-200 shadow-xs rounded-md p-1 pr-2 w-fit">
-      <DynamicLucideIcon icon={node.icon} className="w-4 h-4" />
-      <p>{node.task}</p>
-    </div>
-  );
-}
-
-function TasksTree({ tasks }) {
-  return (
-    <div className="text-xs">
-      {tasks.map((node, index) => (
-        <RenderTask key={index} node={node} />
-      ))}
+      <DynamicLucideIcon icon={task.icon} className="w-4 h-4" />
+      <p>{task.task}</p>
     </div>
   );
 }
@@ -124,7 +77,11 @@ export function ResearchObjectivePage() {
             Write your research objective in natural language and the system
             will extract the required actions.
           </p>
-          <TasksTree tasks={dummyTasks || []} />
+          <div className="text-xs">
+            {newResearchObjectives?.map((task) => (
+              <Task key={task.task} task={task} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
