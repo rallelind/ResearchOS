@@ -4,11 +4,22 @@ import Heading from "@tiptap/extension-heading";
 import ListItem from "@tiptap/extension-list-item";
 import BulletList from "@tiptap/extension-bullet-list";
 import OrderedList from "@tiptap/extension-ordered-list";
+import Highlight from "@tiptap/extension-highlight";
 import { useEffect, useState } from "react";
 
-export function ResearchObjectiveEditor({ content, onChange, hoveredTextUsedFromTask }: { content: string; onChange: (content: string) => void; hoveredTextUsedFromTask: string | null }) {
-  const [isEmpty, setIsEmpty] = useState<boolean>(content === "" || content === "<p></p>");
-  
+export function ResearchObjectiveEditor({
+  content,
+  onChange,
+  hoveredTextUsedFromTask,
+}: {
+  content: string;
+  onChange: (content: string) => void;
+  hoveredTextUsedFromTask: string | null;
+}) {
+  const [isEmpty, setIsEmpty] = useState<boolean>(
+    content === "" || content === "<p></p>"
+  );
+
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -16,6 +27,11 @@ export function ResearchObjectiveEditor({ content, onChange, hoveredTextUsedFrom
         HTMLAttributes: {
           class: "text-xl font-bold capitalize",
           levels: [2],
+        },
+      }),
+      Highlight.configure({
+        HTMLAttributes: {
+          class: "bg-yellow-200",
         },
       }),
       ListItem,
@@ -39,7 +55,9 @@ export function ResearchObjectiveEditor({ content, onChange, hoveredTextUsedFrom
     },
     onUpdate: ({ editor }) => {
       setIsEmpty(editor.isEmpty);
-      onChange(editor.getHTML());
+      if (!hoveredTextUsedFromTask) {
+        onChange(editor.getHTML());
+      }
     },
   });
 
@@ -48,6 +66,29 @@ export function ResearchObjectiveEditor({ content, onChange, hoveredTextUsedFrom
       setIsEmpty(editor.isEmpty);
     }
   }, [editor]);
+
+  useEffect(() => {
+    if (editor && hoveredTextUsedFromTask) {
+      const { state } = editor;
+      const { doc } = state;
+
+      doc.descendants((node, pos) => {
+        if (node.isText && node.text?.includes(hoveredTextUsedFromTask)) {
+          const from = pos + node.text.indexOf(hoveredTextUsedFromTask);
+          const to = from + hoveredTextUsedFromTask.length;
+
+          editor.commands.setTextSelection({ from, to });
+          editor.commands.toggleHighlight();
+
+          return false;
+        }
+      });
+    }
+
+    if (editor && !hoveredTextUsedFromTask) {
+      editor.commands.toggleHighlight();
+    }
+  }, [editor, hoveredTextUsedFromTask]);
 
   return (
     <div className="relative max-w-prose">
