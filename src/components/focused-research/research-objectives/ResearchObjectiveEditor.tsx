@@ -50,7 +50,7 @@ export function ResearchObjectiveEditor({ content, onChange }: { content: string
   }, [editor]);
 
   return (
-    <div className="relative">
+    <div className="relative max-w-prose">
       <EditorContent editor={editor} />
       {isEmpty && (
         <div className="absolute inset-0 text-gray-400 pointer-events-none">
