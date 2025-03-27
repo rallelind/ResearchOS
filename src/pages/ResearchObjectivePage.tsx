@@ -20,9 +20,20 @@ export function DynamicLucideIcon({ icon, className }: DynamicLucideIconProps) {
   return <Icon className={className} />;
 }
 
-function Task({ task }: any) {
+interface TaskProps extends React.HTMLAttributes<HTMLDivElement> {
+  task: {
+    icon: keyof typeof Icons;
+    task: string;
+    textUsedFromTask: string;
+  };
+}
+
+function Task({ task, ...props }: TaskProps) {
   return (
-    <div className="ml-4 mt-2 flex items-center gap-2 bg-white border border-zinc-200 shadow-xs rounded-md p-1 pr-2 w-fit">
+    <div
+      className="mt-2 flex items-center gap-2 bg-white border border-zinc-200 shadow-xs rounded-md p-1 pr-2 w-fit"
+      {...props}
+    >
       <DynamicLucideIcon icon={task.icon} className="w-4 h-4" />
       <p>{task.task}</p>
     </div>
@@ -31,6 +42,9 @@ function Task({ task }: any) {
 
 export function ResearchObjectivePage() {
   const [content, setContent] = useState("");
+  const [hoveredTextUsedFromTask, setHoveredTextUsedFromTask] = useState<
+    string | null
+  >(null);
   const { researchObjectiveId } = useParams();
   const debouncedContent = useDebounce(content, 500);
 
@@ -58,6 +72,7 @@ export function ResearchObjectivePage() {
         <ResearchObjectiveEditor
           content={researchObjective.researchObjective ?? ""}
           onChange={handleChangeNewContent}
+          hoveredTextUsedFromTask={hoveredTextUsedFromTask}
         />
       </div>
       <div className="basis-1/3">
@@ -79,7 +94,12 @@ export function ResearchObjectivePage() {
           </p>
           <div className="text-xs">
             {newResearchObjectives?.map((task) => (
-              <Task key={task.task} task={task} />
+              <Task
+                key={task.task}
+                task={task as any}
+                onMouseEnter={() => setHoveredTextUsedFromTask(task.textUsed)}
+                onMouseLeave={() => setHoveredTextUsedFromTask(null)}
+              />
             ))}
           </div>
         </div>
